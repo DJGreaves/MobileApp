@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         backgroundImage: NetworkImage(
-                          "https://www.trendrr.net/wp-content/uploads/2017/06/Deepika-Padukone-1.jpg",
+                          "https://firebasestorage.googleapis.com/v0/b/mobileapp-a0b7e.appspot.com/o/pippin.png?alt=media&token=ebe04248-3c87-45c7-83c2-12ac955c1190",
                         ),
                         radius: 50.0,
                       ),
@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
                         height: 10.0,
                       ),
                       Text(
-                        "Arthur",
+                        "Pippin, 4",
                         style: TextStyle(
                           fontSize: 22.0,
                           color: Colors.white,
@@ -62,7 +62,7 @@ class HomePage extends StatelessWidget {
 
                                   children: [
                                     Text(
-                                      "Age",
+                                      "",
                                       style: TextStyle(
                                         color: Colors.teal,
                                         fontSize: 22.0,
@@ -73,7 +73,7 @@ class HomePage extends StatelessWidget {
                                       height: 5.0,
                                     ),
                                     Text(
-                                      "4",
+                                      "",
                                       style: TextStyle(
                                         fontSize: 20.0,
                                         color: Colors.teal,
@@ -87,7 +87,7 @@ class HomePage extends StatelessWidget {
 
                                   children: [
                                     Text(
-                                      "Breed",
+                                      "Microchip",
                                       style: TextStyle(
                                         color: Colors.teal,
                                         fontSize: 22.0,
@@ -98,9 +98,9 @@ class HomePage extends StatelessWidget {
                                       height: 5.0,
                                     ),
                                     Text(
-                                      "Border Collie",
+                                      "091823792913842",
                                       style: TextStyle(
-                                        fontSize: 20.0,
+                                        fontSize: 12.5,
                                         color: Colors.teal,
                                       ),
                                     )
@@ -112,7 +112,7 @@ class HomePage extends StatelessWidget {
 
                                   children: [
                                     Text(
-                                      "Sex",
+                                      "",
                                       style: TextStyle(
                                         color: Colors.teal,
                                         fontSize: 22.0,
@@ -123,7 +123,7 @@ class HomePage extends StatelessWidget {
                                       height: 5.0,
                                     ),
                                     Text(
-                                      "Male",
+                                      "",
                                       style: TextStyle(
                                         fontSize: 20.0,
                                         color: Colors.teal,
