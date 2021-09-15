@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'authentication_service.dart';
+import 'package:mobile_app/authentication_service.dart';
 
 class SignInPage extends StatefulWidget {
-
   @override
   SignInPageState createState() => new SignInPageState();
 }
@@ -45,8 +44,8 @@ class SignInPageState extends State<SignInPage> {
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.grey)),
                     focusedBorder: OutlineInputBorder(
-                        borderRadius:  BorderRadius.circular(5.0),
-                        borderSide:  BorderSide(color: Colors.teal )),
+                        borderRadius: BorderRadius.circular(5.0),
+                        borderSide: BorderSide(color: Colors.teal)),
                     labelText: 'Email',
                     labelStyle: TextStyle(color: Colors.teal),
                     hintText: 'Enter your email address'),
@@ -63,14 +62,14 @@ class SignInPageState extends State<SignInPage> {
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.grey)),
                     focusedBorder: OutlineInputBorder(
-                        borderRadius:  BorderRadius.circular(5.0),
-                        borderSide:  BorderSide(color: Colors.teal )),
+                        borderRadius: BorderRadius.circular(5.0),
+                        borderSide: BorderSide(color: Colors.teal)),
                     labelText: 'Password',
                     labelStyle: TextStyle(color: Colors.teal),
                     hintText: 'Enter your secure password'),
               ),
             ),
-            FlatButton(
+            TextButton(
               onPressed: () {
                 Navigator.of(context).pushNamed('/reset_password_page');
               },
@@ -84,12 +83,48 @@ class SignInPageState extends State<SignInPage> {
               width: 250,
               decoration: BoxDecoration(
                   color: Colors.teal, borderRadius: BorderRadius.circular(20)),
-              child: FlatButton(
-                onPressed: () {
-                  context.read<AuthenticationService>().signIn(
-                    email: emailController.text.trim(),
-                    password: passwordController.text.trim(),
-                  );
+              child: TextButton(
+                onPressed: () async {
+                  if (emailController.text.trim() == "") {
+                    showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                              title: Text("Error"),
+                              content: Text("Please enter email address"),
+                            ));
+                  } else {
+                    if (passwordController.text.trim() == "") {
+                      showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                                title: Text("Error"),
+                                content: Text("Please enter password"),
+                              ));
+                    } else {
+                      context
+                          .read<AuthenticationService>()
+                          .signIn(
+                            email: emailController.text.trim(),
+                            password: passwordController.text.trim(),
+                          )
+                          .then((value) => {
+                                if (value == 'Signed in')
+                                  {
+                                    Navigator.of(context)
+                                        .pushNamed('/home_page')
+                                  }
+                                else
+                                  {
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) => AlertDialog(
+                                              title: Text("Error"),
+                                              content: Text(value),
+                                            ))
+                                  }
+                              });
+                    }
+                  }
                 },
                 child: Text(
                   'Login',
@@ -103,10 +138,9 @@ class SignInPageState extends State<SignInPage> {
             TextButton(
               onPressed: () {
                 Navigator.of(context).pushNamed('/sign_up_page');
-                },
-              child: Text(
-                'New User? Create Account',
-                 style: TextStyle(color: Colors.teal)),
+              },
+              child: Text('New User? Create Account',
+                  style: TextStyle(color: Colors.teal)),
             ),
           ],
         ),
