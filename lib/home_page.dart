@@ -197,8 +197,15 @@ class HomePage extends StatelessWidget {
                   child: Container(
                     constraints: BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
                     alignment: Alignment.center,
-                    child: Text("Update Info",
-                      style: TextStyle(color: Colors.white, fontSize: 26.0, fontWeight:FontWeight.w300),
+                    child: FlatButton(
+                      onPressed: () {
+                      context.read<AuthenticationService>().signUserOut(
+                      email: "test");
+                      },
+                    child: Text(
+                    'Log Out',
+                    style: TextStyle(color: Colors.white, fontSize: 25),
+                    ),
                     ),
                   ),
                 )

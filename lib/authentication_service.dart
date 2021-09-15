@@ -49,6 +49,14 @@ class AuthenticationService {
       return e.message;
     }
   }
+
+  Future<String> signUserOut({String email}) async {
+    try {
+      await _firebaseAuth.signOut();
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    }
+  }
 }
 
 
