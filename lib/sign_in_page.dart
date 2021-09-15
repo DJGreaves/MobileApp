@@ -13,6 +13,7 @@ class SignInPageState extends State<SignInPage> {
   final TextEditingController passwordController = TextEditingController();
 
   Widget build(BuildContext context) {
+    final ScrollController _ScrollController = ScrollController();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -20,6 +21,7 @@ class SignInPageState extends State<SignInPage> {
         backgroundColor: Colors.teal,
       ),
       body: SingleChildScrollView(
+        controller: _ScrollController,
         child: Column(
           children: <Widget>[
             Padding(

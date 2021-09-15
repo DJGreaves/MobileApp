@@ -31,11 +31,13 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Pettitt Pet Services',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: AuthenticationWrapper(),
+        routes: routes,
       ),
     );
   }

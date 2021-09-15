@@ -72,7 +72,7 @@ class SignUpPageState extends State<SignUpPage> {
             ),
             Padding(
               padding: const EdgeInsets.only(
-                  left: 15.0, right: 15.0, top: 15, bottom: 0),
+                  left: 15.0, right: 15.0, top: 25, bottom: 25),
               //padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
                 controller: passwordConfirmationController,
@@ -83,7 +83,7 @@ class SignUpPageState extends State<SignUpPage> {
                     focusedBorder: OutlineInputBorder(
                         borderRadius:  BorderRadius.circular(5.0),
                         borderSide:  BorderSide(color: Colors.teal )),
-                    labelText: 'Password',
+                    labelText: 'Confirm Password',
                     labelStyle: TextStyle(color: Colors.teal),
                     hintText: 'Re-enter your secure password'),
               ),
@@ -91,17 +91,22 @@ class SignUpPageState extends State<SignUpPage> {
             Container(
               height: 50,
               width: 250,
+              padding: const EdgeInsets.only(
+                  left: 15.0, right: 15.0, top: 15, bottom: 0),
               decoration: BoxDecoration(
                   color: Colors.teal, borderRadius: BorderRadius.circular(20)),
               child: FlatButton(
                 onPressed: () {
-                  context.read<AuthenticationService>().signIn(
-                    email: emailController.text.trim(),
-                    password: passwordController.text.trim(),
-                  );
+                  if (passwordController.text.trim() == passwordConfirmationController.text.trim()) {
+                    context.read<AuthenticationService>().signUp(
+                      email: emailController.text.trim(),
+                      password: passwordController.text.trim(),
+                    );
+                    Navigator.of(context).pushNamed('/sign_in_page');
+                  }
                 },
                 child: Text(
-                  'Login',
+                  'Sign Up',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),
@@ -109,9 +114,6 @@ class SignUpPageState extends State<SignUpPage> {
             SizedBox(
               height: 130,
             ),
-            Text(
-                'New User? Create Account',
-                style: TextStyle(color: Colors.teal)),
           ],
         ),
       ),
