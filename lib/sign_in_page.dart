@@ -105,7 +105,8 @@ class SignInPageState extends State<SignInPage> {
                           .read<AuthenticationService>()
                           .signIn(
                             email: emailController.text.trim(),
-                            password: passwordController.text.trim(),
+                            password:
+                                passwordController.text.toLowerCase().trim(),
                           )
                           .then((value) => {
                                 if (value == 'Signed in')

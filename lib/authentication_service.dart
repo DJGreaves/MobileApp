@@ -25,14 +25,7 @@ class AuthenticationService {
           email: email, password: password);
       return "Signed in";
     } on FirebaseAuthException catch (e) {
-      // if (e.code == 'user-not-found') {
-      //   print('No user found for that email.');
-      // } else if (e.code == 'wrong-password') {
-      //   print('Wrong password provided for that user.');
-      // } else {
-      //   print(e.message);
-      // }
-      return e.message;
+      return e.code;
     }
   }
 
@@ -62,6 +55,14 @@ class AuthenticationService {
   Future<String> signUserOut({String email}) async {
     try {
       await _firebaseAuth.signOut();
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    }
+  }
+
+  Future<String> getUsername({String email}) async {
+    try {
+      return await _firebaseAuth.currentUser.email;
     } on FirebaseAuthException catch (e) {
       return e.message;
     }

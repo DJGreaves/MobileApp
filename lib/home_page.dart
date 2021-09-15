@@ -3,14 +3,36 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'authentication_service.dart';
+import 'package:mobile_app/authentication_service.dart';
 import 'pages.dart';
-
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text(
+          'Username',
+          style: TextStyle(
+            color: Colors.teal,
+            fontSize: 22.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        actions: [
+          IconButton(
+              icon: Icon(
+                Icons.logout,
+                color: Colors.teal,
+              ),
+              onPressed: () {
+                context
+                    .read<AuthenticationService>()
+                    .signUserOut(email: "test");
+              }),
+        ],
+      ),
       body: Column(
         children: [
           Container(
@@ -18,9 +40,7 @@ class HomePage extends StatelessWidget {
                   gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: [Colors.white, Colors.teal]
-                  )
-              ),
+                      colors: [Colors.white, Colors.teal])),
               child: Container(
                 width: double.infinity,
                 height: 350.0,
@@ -49,17 +69,18 @@ class HomePage extends StatelessWidget {
                         height: 10.0,
                       ),
                       Card(
-                        margin: EdgeInsets.symmetric(horizontal: 20.0,vertical: 5.0),
+                        margin: EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 5.0),
                         clipBehavior: Clip.antiAlias,
                         color: Colors.white,
                         elevation: 5.0,
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 22.0),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0, vertical: 22.0),
                           child: Row(
                             children: [
                               Expanded(
                                 child: Column(
-
                                   children: [
                                     Text(
                                       "",
@@ -84,7 +105,6 @@ class HomePage extends StatelessWidget {
                               ),
                               Expanded(
                                 child: Column(
-
                                   children: [
                                     Text(
                                       "Microchip",
@@ -109,7 +129,6 @@ class HomePage extends StatelessWidget {
                               ),
                               Expanded(
                                 child: Column(
-
                                   children: [
                                     Text(
                                       "",
@@ -139,11 +158,11 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-              )
-          ),
+              )),
           Container(
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 30.0,horizontal: 16.0),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 30.0, horizontal: 16.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -153,13 +172,13 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(
                         color: Colors.teal,
                         fontStyle: FontStyle.normal,
-                        fontSize: 28.0
-                    ),
+                        fontSize: 28.0),
                   ),
                   SizedBox(
                     height: 10.0,
                   ),
-                  Text('Bla Bla Bla............................',
+                  Text(
+                    'Bla Bla Bla............................',
                     style: TextStyle(
                       fontSize: 22.0,
                       fontStyle: FontStyle.italic,
@@ -177,12 +196,10 @@ class HomePage extends StatelessWidget {
           ),
           Container(
             width: 300.00,
-
             child: RaisedButton(
-                onPressed: (){},
+                onPressed: () {},
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(80.0)
-                ),
+                    borderRadius: BorderRadius.circular(80.0)),
                 elevation: 0.0,
                 padding: EdgeInsets.all(0.0),
                 child: Ink(
@@ -190,26 +207,26 @@ class HomePage extends StatelessWidget {
                     gradient: LinearGradient(
                         begin: Alignment.centerRight,
                         end: Alignment.centerLeft,
-                        colors: [Colors.teal,Colors.teal]
-                    ),
+                        colors: [Colors.teal, Colors.teal]),
                     borderRadius: BorderRadius.circular(30.0),
                   ),
                   child: Container(
-                    constraints: BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
+                    constraints:
+                        BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
                     alignment: Alignment.center,
                     child: FlatButton(
                       onPressed: () {
-                      context.read<AuthenticationService>().signUserOut(
-                      email: "test");
+                        context
+                            .read<AuthenticationService>()
+                            .signUserOut(email: "test");
                       },
-                    child: Text(
-                    'Log Out',
-                    style: TextStyle(color: Colors.white, fontSize: 25),
-                    ),
+                      child: Text(
+                        'Log Out',
+                        style: TextStyle(color: Colors.white, fontSize: 25),
+                      ),
                     ),
                   ),
-                )
-            ),
+                )),
           ),
         ],
       ),
