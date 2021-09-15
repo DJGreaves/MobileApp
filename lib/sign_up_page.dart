@@ -2,21 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'authentication_service.dart';
 
-class SignInPage extends StatefulWidget {
+class SignUpPage extends StatefulWidget {
 
   @override
-  SignInPageState createState() => new SignInPageState();
+  SignUpPageState createState() => new SignUpPageState();
 }
 
-class SignInPageState extends State<SignInPage> {
+class SignUpPageState extends State<SignUpPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController passwordConfirmationController = TextEditingController();
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Sign In"),
+        title: Text("Sign Up"),
         backgroundColor: Colors.teal,
       ),
       body: SingleChildScrollView(
@@ -68,13 +70,22 @@ class SignInPageState extends State<SignInPage> {
                     hintText: 'Enter your secure password'),
               ),
             ),
-            FlatButton(
-              onPressed: (){
-                //TODO FORGOT PASSWORD SCREEN GOES HERE
-              },
-              child: Text(
-                'Forgot Password',
-                style: TextStyle(color: Colors.teal, fontSize: 15),
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 15.0, right: 15.0, top: 15, bottom: 0),
+              //padding: EdgeInsets.symmetric(horizontal: 15),
+              child: TextField(
+                controller: passwordConfirmationController,
+                obscureText: true,
+                decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey)),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius:  BorderRadius.circular(5.0),
+                        borderSide:  BorderSide(color: Colors.teal )),
+                    labelText: 'Password',
+                    labelStyle: TextStyle(color: Colors.teal),
+                    hintText: 'Re-enter your secure password'),
               ),
             ),
             Container(
@@ -98,14 +109,9 @@ class SignInPageState extends State<SignInPage> {
             SizedBox(
               height: 130,
             ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed('/sign_up_page');
-                },
-              child: Text(
+            Text(
                 'New User? Create Account',
-                 style: TextStyle(color: Colors.teal)),
-            ),
+                style: TextStyle(color: Colors.teal)),
           ],
         ),
       ),

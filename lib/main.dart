@@ -1,11 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile_app/sign_in_page.dart';
 import 'package:provider/provider.dart';
-
 import 'authentication_service.dart';
-import 'home_page.dart';
+import 'pages.dart';
+
+var routes = <String, WidgetBuilder>{
+  "/home": (BuildContext context) => HomePage(),
+  "/sign_in_page": (BuildContext context) => SignInPage(),
+  "/sign_up_page": (BuildContext context) => SignUpPage(),
+};
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
