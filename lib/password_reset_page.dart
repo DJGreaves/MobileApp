@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'authentication_service.dart';
 
-class SignInPage extends StatefulWidget {
+class PasswordResetPage extends StatefulWidget {
 
   @override
-  SignInPageState createState() => new SignInPageState();
+  PasswordResetPageState createState() => new PasswordResetPageState();
 }
 
-class SignInPageState extends State<SignInPage> {
+class PasswordResetPageState extends State<PasswordResetPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -17,7 +17,7 @@ class SignInPageState extends State<SignInPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Sign In"),
+        title: Text("Reset Password"),
         backgroundColor: Colors.teal,
       ),
       body: SingleChildScrollView(
@@ -52,33 +52,6 @@ class SignInPageState extends State<SignInPage> {
                     hintText: 'Enter your email address'),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 15.0, right: 15.0, top: 15, bottom: 0),
-              //padding: EdgeInsets.symmetric(horizontal: 15),
-              child: TextField(
-                controller: passwordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey)),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius:  BorderRadius.circular(5.0),
-                        borderSide:  BorderSide(color: Colors.teal )),
-                    labelText: 'Password',
-                    labelStyle: TextStyle(color: Colors.teal),
-                    hintText: 'Enter your secure password'),
-              ),
-            ),
-            FlatButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed('/reset_password_page');
-              },
-              child: Text(
-                'Forgot Password',
-                style: TextStyle(color: Colors.teal, fontSize: 15),
-              ),
-            ),
             Container(
               height: 50,
               width: 250,
@@ -86,27 +59,18 @@ class SignInPageState extends State<SignInPage> {
                   color: Colors.teal, borderRadius: BorderRadius.circular(20)),
               child: FlatButton(
                 onPressed: () {
-                  context.read<AuthenticationService>().signIn(
+                  context.read<AuthenticationService>().resetPassword(
                     email: emailController.text.trim(),
-                    password: passwordController.text.trim(),
                   );
                 },
                 child: Text(
-                  'Login',
+                  'Send Email',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),
             ),
             SizedBox(
               height: 130,
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed('/sign_up_page');
-                },
-              child: Text(
-                'New User? Create Account',
-                 style: TextStyle(color: Colors.teal)),
             ),
           ],
         ),

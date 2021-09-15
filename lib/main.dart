@@ -9,6 +9,7 @@ var routes = <String, WidgetBuilder>{
   "/home": (BuildContext context) => HomePage(),
   "/sign_in_page": (BuildContext context) => SignInPage(),
   "/sign_up_page": (BuildContext context) => SignUpPage(),
+  "/reset_password_page": (BuildContext context) => PasswordResetPage(),
 };
 
 Future<void> main() async {
