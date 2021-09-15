@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "146240404427",
+    "project_id": "mobileapp-a0b7e",
+    "storage_bucket": "mobileapp-a0b7e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:146240404427:android:0eb0961154b79cdd3ed44e",
+        "android_client_info": {
+          "package_name": "pettittpetservices.co.mobile_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "146240404427-9e9073oa93lo4c354eq97o3h84vmemnb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIwgKWja7b3EaeTxY-pSatKU3cE_Tmk14"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "146240404427-9e9073oa93lo4c354eq97o3h84vmemnb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "146240404427-nahtta3o2srji6gvusv0a3g6519f2asp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "pettittpetservices.co.mobileApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
