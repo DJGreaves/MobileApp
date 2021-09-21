@@ -1,14 +1,33 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'authentication_service.dart';
 import 'pages.dart';
 
+final usersRef = FirebaseFirestore.instance.collection('accounts');
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   @override
+  HomePageState createState() => new HomePageState();
+}
+class HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    getAccounts();
+    super.initState();
+  }
+
+  getAccounts() {
+    usersRef.get().then((QuerySnapshot snapshot) {
+      snapshot.docs.forEach((DocumentSnapshot doc) {
+        print(doc.data());
+      });
+    });
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
